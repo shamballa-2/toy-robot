@@ -1,0 +1,29 @@
+{
+  "name": "toy-robot",
+  "version": "1.0.0",
+  "description": "toy robot game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shamballa-2/toy-robot.git"
+  },
+  "author": "anonymous",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shamballa-2/toy-robot/issues"
+  },
+  "homepage": "https://github.com/shamballa-2/toy-robot#readme",
+  "devDependencies": {
+    "@babel/cli": "7.13.14",
+    "@babel/core": "7.13.14",
+    "@babel/node": "7.13.13",
+    "@babel/preset-env": "7.13.12",
+    "eslint": "7.23.0"
+  },
+  "dependencies": {
+    "prompt-sync": "4.2.0"
+  }
+}
