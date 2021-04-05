@@ -10,6 +10,7 @@ const toy = new Toy(0, 0, '');
 
 // This variable is used to determine if the app should continue prompting the user for input
 const continueProgram = false;
+let isToyPlaced = false;
 
 while (!continueProgram) {
   // Get user input
@@ -24,19 +25,20 @@ while (!continueProgram) {
         const yPos = validYDimension(placeArgs[1]);
         const face = validDirection(placeArgs[2]);
         toy.place(xPos, yPos, face);
+        isToyPlaced = true;
         break;
       }
-      case 'MOVE':
+      case isToyPlaced && 'MOVE':
         validateMove(toy.face, toy.xPos, toy.yPos);
         toy.move();
         break;
-      case 'LEFT':
+      case isToyPlaced && 'LEFT':
         toy.turnLeft();
         break;
-      case 'RIGHT':
+      case isToyPlaced && 'RIGHT':
         toy.turnRight();
         break;
-      case 'REPORT':
+      case isToyPlaced && 'REPORT':
         toy.reportPosition();
         break;
       default:
