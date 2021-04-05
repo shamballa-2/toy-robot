@@ -40,7 +40,7 @@ class Toy {
         this.xPos -= 1;
         break;
       default: break;
-    } 
+    }
   }
 
   // left logic
