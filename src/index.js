@@ -16,8 +16,8 @@ while (!continueProgram) {
   switch (commandArgs[0]) {
     case 'PLACE': {
       const placeArgs = commandArgs[1].split(',');
-      const xPos = (placeArgs[0]);
-      const yPos = (placeArgs[1]);
+      const xPos = Number(placeArgs[0]);
+      const yPos = Number(placeArgs[1]);
       const face = (placeArgs[2]);
       toy.place(xPos, yPos, face);
       break;

@@ -1,7 +1,13 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
 import config from '../config';
+import constants from '../constants';
+
 const { leftMapping, rightMapping } = config;
+const { directions } = constants;
+const {
+  NORTH, SOUTH, EAST, WEST,
+} = directions;
 
 class Toy {
   // init toy properties
@@ -20,7 +26,21 @@ class Toy {
 
   // move logic
   move() {
-    console.log('move logic');
+    switch (this.face) {
+      case NORTH:
+        this.yPos += 1;
+        break;
+      case SOUTH:
+        this.yPos -= 1;
+        break;
+      case EAST:
+        this.xPos += 1;
+        break;
+      case WEST:
+        this.xPos -= 1;
+        break;
+      default: break;
+    } 
   }
 
   // left logic
