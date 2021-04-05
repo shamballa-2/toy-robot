@@ -4,6 +4,7 @@ import {
   validXDimension, validYDimension, validDirection, validateMove,
 } from './validations';
 
+
 const prompt = promptSync({ sigint: true });
 
 const toy = new Toy(0, 0, '');
