@@ -1,5 +1,8 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-console */
+import config from '../config';
+const { leftMapping, rightMapping } = config;
+
 class Toy {
   // init toy properties
   constructor(xPos, yPos, face) {
@@ -22,17 +25,18 @@ class Toy {
 
   // left logic
   turnLeft() {
-    console.log('turn left');
+    this.face = leftMapping[this.face];
   }
 
   // right logic
   turnRight() {
-    console.log('turn right');
+    this.face = rightMapping[this.face];
   }
 
   // report position logic
   reportPosition() {
-    console.log('report position');
+    const reportData = [this.xPos, this.yPos, this.face];
+    console.log(reportData.join(','));
   }
 }
 
