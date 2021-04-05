@@ -1,5 +1,9 @@
 import promptSync from 'prompt-sync';
 import Toy from './models/Toy';
+import {
+  validXDimension, validYDimension, validDirection, validateMove,
+} from './validations';
+
 
 const prompt = promptSync({ sigint: true });
 
@@ -16,13 +20,14 @@ while (!continueProgram) {
   switch (commandArgs[0]) {
     case 'PLACE': {
       const placeArgs = commandArgs[1].split(',');
-      const xPos = Number(placeArgs[0]);
-      const yPos = Number(placeArgs[1]);
-      const face = (placeArgs[2]);
+      const xPos = validXDimension(placeArgs[0]);
+      const yPos = validYDimension(placeArgs[1]);
+      const face = validDirection(placeArgs[2]);
       toy.place(xPos, yPos, face);
       break;
     }
     case 'MOVE':
+      validateMove(toy.face, toy.xPos, toy.yPos);
       toy.move();
       break;
     case 'LEFT':
