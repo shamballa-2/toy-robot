@@ -10,7 +10,9 @@ const {
 
 // validates the horizontal position value
 export function validXDimension(value) {
-  if (value < X_MIN || value >= X_MAX) {
+  if (isNaN(value)) {
+    throw new Error('X VALUE SHOULD BE A NUMBER');
+  } else if (value < X_MIN || value >= X_MAX) {
     throw new Error('X MAXED OUT');
   }
   return Number(value);
@@ -18,7 +20,9 @@ export function validXDimension(value) {
 
 // validates the vertical position value
 export function validYDimension(value) {
-  if (value < Y_MIN || value >= Y_MAX) {
+  if (isNaN(value)) {
+    throw new Error('Y VALUE SHOULD BE A NUMBER');
+  } else if (value < Y_MIN || value >= Y_MAX) {
     throw new Error('Y MAXED OUT');
   }
   return Number(value);
@@ -30,6 +34,19 @@ export function validDirection(value) {
     throw new Error('INVALID DIRECTION VALUE');
   }
   return value;
+}
+
+// validates whether a valid place command is used
+export function validPlaceCommand(args) {
+  if (!args) {
+    throw new Error('PLACE CMD NEEDS PARAMETERS');
+  } else {
+    let placeArgs = args.split(',');
+    if (placeArgs.length !== 3) {
+      throw new Error('PLACE CMD NEEDS 3 PARAMETERS: X,Y,F');
+    }
+    return placeArgs;
+  }
 }
 
 // validates whether the toy is placed based on its face value

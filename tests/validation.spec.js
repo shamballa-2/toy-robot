@@ -1,10 +1,25 @@
 import {
-    validXDimension, validYDimension, validDirection, validateMove, validToyPlacement
+    validXDimension, validYDimension, validDirection, validateMove, validToyPlacement, validPlaceCommand
   } from '../src/validations';
   
 
 
   describe('position validation tests', () => {
+
+    it('should not allow non-numeric x value', () => {
+
+        expect(validXDimension(2)).toBe(2);
+        expect(validXDimension(4)).toBe(4);
+        expect(() => { validXDimension('asd') }).toThrow('X VALUE SHOULD BE A NUMBER');
+    });
+
+    it('should not allow non-numeric y value', () => {
+        
+        expect(validYDimension(2)).toBe(2);
+        expect(validYDimension(4)).toBe(4);
+        expect(() => { validYDimension('asd') }).toThrow('Y VALUE SHOULD BE A NUMBER');
+    });
+
 
     it('should not allow value greater than x max limit', () => {
 
@@ -152,8 +167,26 @@ import {
         expect(validToyPlacement("WEST")).toBeTruthy();
     });
 
-    it('rejects if toy is not facing in a direction', () => {
+    it('ignores if toy is not facing in a direction', () => {
         expect(() => validToyPlacement("")).toThrow('TOY NEEDS TO BE PLACED FIRST');
     });
+
+    it('ignores if place command has no parmaters and shows message', () => {
+        expect(() => validPlaceCommand("")).toThrow('PLACE CMD NEEDS PARAMETERS');
+        expect(() => validPlaceCommand(undefined)).toThrow('PLACE CMD NEEDS PARAMETERS');
+    });
+
+    it('ignores if place command fails to provide 3 parameters and shows message', () => {
+        expect(() => validPlaceCommand("2")).toThrow('PLACE CMD NEEDS 3 PARAMETERS: X,Y,F');
+        expect(() => validPlaceCommand("2,NORTH,2,3")).toThrow('PLACE CMD NEEDS 3 PARAMETERS: X,Y,F');
+        expect(() => validPlaceCommand(",,,")).toThrow('PLACE CMD NEEDS 3 PARAMETERS: X,Y,F');
+
+    });
+
+    it('accepts if place command provides 3 parameters in correct order', () => {
+        expect(validPlaceCommand("2,4,SOUTH")).toEqual(["2","4","SOUTH"]);
+        expect(validPlaceCommand("0,2,EAST")).toEqual(["0","2","EAST"]);
+    });
+
 
   });

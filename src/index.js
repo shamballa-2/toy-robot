@@ -1,7 +1,7 @@
 import promptSync from 'prompt-sync';
 import Toy from './models/Toy';
 import {
-  validXDimension, validYDimension, validDirection, validateMove,
+  validXDimension, validYDimension, validDirection, validateMove, validPlaceCommand
 } from './validations';
 
 
@@ -21,7 +21,8 @@ while (!continueProgram) {
     // Handle toy operations based on input commands
     switch (commandArgs[0]) {
       case 'PLACE': {
-        const placeArgs = commandArgs[1].split(',');
+        const placeArgs = validPlaceCommand(commandArgs[1]); 
+        // todo need to add validation for three arguments
         const xPos = validXDimension(placeArgs[0]);
         const yPos = validYDimension(placeArgs[1]);
         const face = validDirection(placeArgs[2]);
