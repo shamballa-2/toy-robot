@@ -11,4 +11,11 @@ export default {
     X_MAX: 5,
     Y_MAX: 5,
   },
+  validCommands: [
+    'PLACE',
+    'LEFT',
+    'RIGHT',
+    'MOVE',
+    'REPORT'
+  ]
 };
