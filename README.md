@@ -8,6 +8,7 @@
   robot falling from the table must be prevented, however further valid
   movement commands must still be allowed.
 
+
 ## Requirements
 
 For development, you will only need Node.js and a [Node Global Package Manager (NPM)](https://docs.npmjs.com/) installed in your environement.
@@ -53,8 +54,22 @@ There are three different binary/executable files created for targeted environme
     Run in Linux using following command:(may need to make the binary executable by chmod a+x)
     $ ./toy-robot-linux
 
+---
+
+### Commands
+
+| Command	 Name| Usage | Example |
+|:--|:--|:--|
+| `PLACE X,Y,F` | Puts the toy robot on the table in position X,Y and facing NORTH, SOUTH, EAST or WEST. | `PLACE 1,2,EAST` |
+| `LEFT` | Rotates the robot 90 degrees in the specified direction. | `LEFT` |
+| `RIGHT` | Rotates the robot 90 degrees in the specified direction. | `RIGHT` |
+| `MOVE` | Moves the toy one unit forward in the direction it is currently facing. | `MOVE` |
+| `REPORT` | Announces the X,Y and F of the robot. | `REPORT` |
+| `EXIT` | Exits the program. | `EXIT` |
+
     
 ---
+
 ## Run Tests
 Use the following command to run all the tests in the `/tests` folder and for running single test add file name to be tested ahead of the command.
 
