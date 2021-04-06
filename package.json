@@ -4,7 +4,8 @@
   "description": "toy robot game",
   "main": "index.js",
   "scripts": {
-    "start": "babel ./src --out-dir dist && node dist/index.js",
+    "build": "babel src -d dist",
+    "start": "npm run --silent build && node dist",
     "test": "jest --coverage"
   },
   "repository": {
