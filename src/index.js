@@ -54,6 +54,8 @@ while (!continueProgram) {
       case isToyPlaced && 'REPORT':
         toy.reportPosition();
         break;
+      case 'EXIT':
+          process.exit();  
       default:
         console.log('INVALID COMMAND');
         break;
