@@ -8,6 +8,7 @@
     "start": "npm run --silent build && node dist",
     "test": "jest --coverage"
   },
+  "bin": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shamballa-2/toy-robot.git"
